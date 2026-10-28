@@ -1,0 +1,6 @@
+Orange3>=3.40.0
+AnyQt
+PyQt6
+PyQt6-WebEngine
+plotly>=5.0.0
+pytest

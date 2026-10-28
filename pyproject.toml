@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "visu_orange_v4"
+version = "4.0.0"
+description = "Bibliothèque de visualisation TEMPO v4 pour Orange Data Mining"
+readme = "README.md"
+requires-python = ">=3.12"
+authors = [
+    { name = "Équipe TEMPO" }
+]
+dependencies = [
+    "Orange3>=3.40.0",
+    "AnyQt",
+    "PyQt6",
+    "PyQt6-WebEngine",
+    "plotly>=5.0.0"
+]
+
+[project.entry-points."orange.widgets"]
+TEMPO = "tempo.widgets"
+
+[project.entry-points."orange.widgets.help"]
+TEMPO = "tempo.widgets:HTML_HELP_PATH"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["tempo*"]
+
+[tool.setuptools.package-data]
+"tempo.widgets.graphique" = ["*.js", "*.md", "*.html", "icons/*.png"]

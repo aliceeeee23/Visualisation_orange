@@ -1,0 +1,5 @@
+[orange.widgets]
+TEMPO = tempo.widgets
+
+[orange.widgets.help]
+TEMPO = tempo.widgets:HTML_HELP_PATH
