@@ -14,8 +14,8 @@ from AnyQt.QtWidgets import (
 )
 from AnyQt.QtCore import Qt, pyqtSignal
 
-from tempo.widgets.graphique.modele import SerieGraphique
-from tempo.widgets.graphique.gestionnaire_axes import ConfigurationAxe
+from .modele import SerieGraphique
+from .gestionnaire_axes import ConfigurationAxe
 
 
 class FenetreParametresGraphique(QDialog):

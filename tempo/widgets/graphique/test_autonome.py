@@ -13,7 +13,14 @@ from typing import List
 from AnyQt.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget, QPushButton
 from AnyQt.QtCore import Qt
 
-from tempo.widgets.graphique.widget_graphique import OWVisualisationV4
+import os
+if __name__ == "__main__" and __package__ is None:
+    sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")))
+
+try:
+    from .widget_graphique import OWVisualisationV4
+except (ImportError, ValueError):
+    from tempo.widgets.graphique.widget_graphique import OWVisualisationV4
 
 logging.basicConfig(level=logging.INFO)
 

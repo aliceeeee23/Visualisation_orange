@@ -14,9 +14,9 @@ from AnyQt.QtCore import Qt
 from Orange.widgets.widget import OWWidget, Input, Msg
 from Orange.widgets import settings
 
-from tempo.widgets.graphique.adaptation_metier import AdaptateurMetier
-from tempo.widgets.graphique.gestionnaire_graphiques import GestionnaireGraphiques, GraphiqueOnglet
-from tempo.widgets.graphique.exportation import GestionnaireExport
+from .adaptation_metier import AdaptateurMetier
+from .gestionnaire_graphiques import GestionnaireGraphiques, GraphiqueOnglet
+from .exportation import GestionnaireExport
 
 logger = logging.getLogger(__name__)
 
