@@ -73,38 +73,74 @@ tempo.widgets.graphique = *.js, *.md, *.html, icons/*.png
 
 ---
 
-## 📁 Méthode 2 : Regroupement dans votre dossier `widgets/` existant
+## 📁 Méthode 2 : Remplissage direct du dossier `Visualisation/` de votre projet (Recommandé pour votre structure)
 
-Si vous souhaitez ajouter le widget **Visualisation v4** directement dans votre catégorie de widgets existante (par exemple sous la catégorie `"Mes Widgets"`).
+Si votre projet possède une arborescence avec un dossier `Visualisation/` sous `Widgets/` :
 
-### 1. Structure des dossiers
-Copiez le dossier `graphique` (issu de `tempo/widgets/graphique/`) directement dans le dossier `widgets` de votre projet.
-
-**Exemple d'arborescence projet :**
 ```
-mon_projet_orange/
-├── pyproject.toml
-└── mon_package/
+Mon-projet/
+├── __init__.py
+└── Dossier_projet/
     ├── __init__.py
-    └── widgets/                # Point d'entrée Orange principal
-        ├── __init__.py         # Définit NAME = "Mes Widgets"
-        ├── mon_widget_1.py
-        └── graphique/          # Dossier graphique issu de TEMPO
+    └── Widgets/
+        ├── __init__.py
+        ├── Categorie1/
+        │   └── Widget1.py
+        └── Visualisation/      <-- Dossier à remplir avec le contenu enrichi
             ├── __init__.py
-            ├── widget_graphique.py  # Contient OWVisualisationV4
-            ├── vue_plotly.py
+            ├── widget_graphique.py
+            ├── adaptation_metier.py
+            ├── conversions.py
+            ├── exportation.py
+            ├── fenetres.py
+            ├── gestionnaire_axes.py
+            ├── gestionnaire_graphiques.py
+            ├── modele.py
+            ├── panneau_options.py
             ├── plotly.min.js
-            ├── aide.md
-            └── ...
+            ├── test_autonome.py
+            ├── vue_plotly.py
+            └── aide.md
 ```
 
-### 2. Adaptation de la catégorie du widget (Optionnel)
-Dans `mon_package/widgets/graphique/widget_graphique.py`, vous pouvez ajuster la catégorie affichée par Orange :
+### 1. Remplissage du dossier `Visualisation/`
+Copiez tous les fichiers situés dans `tempo/widgets/graphique/` directement dans le dossier `Mon-projet/Dossier_projet/Widgets/Visualisation/`.
+
+### 2. Contenu du fichier `Visualisation/__init__.py`
+Afin qu'Orange Canvas découvre correctement le widget tout en exposant sa classe, assurez-vous que `Visualisation/__init__.py` contient :
+
 ```python
-class OWVisualisationV4(OWWidget):
-    name = "Visualisation v4"
-    category = "Mes Widgets"  # Nom de votre catégorie principale
-    # ...
+from .widget_graphique import OWVisualisationV4
+
+__all__ = ["OWVisualisationV4"]
+```
+
+### 3. Connexion d'entrée et compatibilité avec vos objets métiers
+Le widget possède une entrée unique déclarant :
+```python
+class Inputs:
+    donnees_objet = Input("Données Objet", Any, auto_summary=False)
+```
+Grâce au composant `AdaptateurMetier`, le widget accepte directement vos instances d'objets métiers (Mesure, Trajectoire, Point, structures CTypes, etc.).
+Aucun autre widget ne peut s'interposer si ses types de sortie ne sont pas compatibles : l'entrée gère l'extraction directe et sécurisée des données sans jamais modifier vos objets originaux.
+
+### 4. Configuration des Entry Points dans `setup.cfg` ou `pyproject.toml`
+Pour que la catégorie `Visualisation` apparaisse dans Orange Canvas :
+
+**Dans `setup.cfg` :**
+```ini
+[options.entry_points]
+orange.widgets =
+    Mes Widgets = Dossier_projet.Widgets
+```
+
+**Ou dans `pyproject.toml` :**
+```toml
+[project.entry-points."orange.widgets"]
+"Mes Widgets" = "Dossier_projet.Widgets"
+
+[tool.setuptools.package-data]
+"Dossier_projet.Widgets.Visualisation" = ["*.js", "*.md", "*.html"]
 ```
 
 ### 3. Inclusion des fichiers statiques dans `pyproject.toml`
