@@ -60,7 +60,7 @@ class OWVisualisationV4(OWWidget):
     description = "Visualisation scientifique interactive TEMPO v4 avec Plotly"
     icon = "icon.png"
     priority = 10
-    category = "TEMPO"
+    category = "Visualisation"
     keywords = ["tempo", "visualisation", "plotly", "mesure", "trajectoire"]
 
     want_main_area = True
