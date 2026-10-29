@@ -11,11 +11,11 @@ from AnyQt.QtWidgets import (
 )
 from AnyQt.QtCore import pyqtSignal
 
-from tempo.widgets.graphique.modele import CollectionSeries, SerieGraphique
-from tempo.widgets.graphique.gestionnaire_axes import ConfigurationAxe
-from tempo.widgets.graphique.vue_plotly import VueGraphiquePlotly
-from tempo.widgets.graphique.panneau_options import PanneauOptionsRapides
-from tempo.widgets.graphique.fenetres import FenetreParametresGraphique, FenetreEchellesAxes
+from .modele import CollectionSeries, SerieGraphique
+from .gestionnaire_axes import ConfigurationAxe
+from .vue_plotly import VueGraphiquePlotly
+from .panneau_options import PanneauOptionsRapides
+from .fenetres import FenetreParametresGraphique, FenetreEchellesAxes
 
 
 class GraphiqueOnglet(QWidget):
@@ -188,7 +188,7 @@ class GestionnaireGraphiques(QWidget):
 
         for idx, m_data in enumerate(liste_dict_mesures):
             id_s = f"s_{idx}"
-            from tempo.widgets.graphique.modele import PointGraphique
+            from .modele import PointGraphique
             pts_obj = [
                 PointGraphique(repere=p[0], valeur=p[1], validite=p[2])
                 for p in m_data["points"]

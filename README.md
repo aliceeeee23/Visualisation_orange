@@ -17,6 +17,7 @@ visu_orange_v4/
 ├── setup.cfg                   # Métadonnées et configuration d'installation
 ├── requirements.txt            # Dépendances requises
 ├── README.md                   # Documentation d'installation, d'usage et métier
+├── INTEGRATION_GUIDE.md        # Guide d'intégration comme dossier dans un projet de widgets Orange
 ├── tempo/
 │   ├── __init__.py             # Déclaration du package TEMPO
 │   └── widgets/
@@ -42,6 +43,13 @@ visu_orange_v4/
     ├── test_conversions.py         # Tests des conversions d'unités et de la logique log
     └── test_validite.py            # Tests de la convention de validité (1=valide, 0=invalide)
 ```
+
+---
+
+## 📚 Intégration dans un Projet de Widgets Personnalisés
+Pour intégrer ce dépôt ou le dossier `tempo/` comme un nouveau dossier/sous-package dans votre projet global regroupant vos widgets Orange personnalisés, consultez le guide dédié : **[INTEGRATION_GUIDE.md](INTEGRATION_GUIDE.md)**.
+
+Il présente 3 méthodes d'intégration (sous-package dédié, regroupement dans votre dossier `widgets/`, ou sous-module Git) avec les exemples de configuration `pyproject.toml` / `setup.cfg`.
 
 ---
 

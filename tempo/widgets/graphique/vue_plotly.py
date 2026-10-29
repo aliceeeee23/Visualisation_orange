@@ -13,9 +13,9 @@ from AnyQt.QtWidgets import QWidget, QVBoxLayout
 from AnyQt.QtWebEngineWidgets import QWebEngineView
 from AnyQt.QtCore import QUrl, pyqtSignal
 
-from tempo.widgets.graphique.modele import SerieGraphique, PointGraphique
-from tempo.widgets.graphique.gestionnaire_axes import ConfigurationAxe, GestionnaireAxes
-from tempo.widgets.graphique.conversions import GestionnaireConversions
+from .modele import SerieGraphique, PointGraphique
+from .gestionnaire_axes import ConfigurationAxe, GestionnaireAxes
+from .conversions import GestionnaireConversions
 
 logger = logging.getLogger(__name__)
 
